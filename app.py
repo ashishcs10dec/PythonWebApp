@@ -41,13 +41,21 @@ def testimonial():
 def contact():
     return render_template('contact.html')
 
-@app.route('/login')
+@app.route('/login',methods=['POST','GET'])
 def login():
+    if request.method=='Post':
+        user_name=request.form.get('userName')
+        user_name=request.form.get('userName')
+        
     return render_template('login.html')
 
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
+
+@app.route('/upload')
+def upload():
+    return render_template('upload.html')
 
 if __name__=='__main__':
     app.run()
