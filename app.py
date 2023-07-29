@@ -45,9 +45,9 @@ def contact():
 def login():
     if request.method=='POST':
         user_name=request.form.get('userName')
+        #session['username']=user_name
         return redirect(url_for('success',user=user_name))
     else:
-        print('Hello')
         return render_template('login.html')
 
 @app.route('/signup')
