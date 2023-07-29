@@ -57,5 +57,12 @@ def signup():
 def upload():
     return render_template('upload.html')
 
+@app.route('/check/<name>')
+def check(name):
+    if name == 'admin':
+        return "Welcome Admin"
+    else:
+        return "Welcome Guest"
+
 if __name__=='__main__':
     app.run()
