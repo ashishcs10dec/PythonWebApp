@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request,redirect
 
 app=Flask(__name__)
 
@@ -43,19 +43,20 @@ def contact():
 
 @app.route('/login',methods=['POST','GET'])
 def login():
-    if request.method=='Post':
+    if request.method=='POST':
         user_name=request.form.get('userName')
-        user_name=request.form.get('userName')
-        
-    return render_template('login.html')
+        return redirect(url_for('success',user=user_name))
+    else:
+        print('Hello')
+        return render_template('login.html')
 
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
 
-@app.route('/upload')
-def upload():
-    return render_template('upload.html')
+@app.route('/success/<user>')
+def success(user):
+    return render_template('success.html',name=user)
 
 @app.route('/check/<name>')
 def check(name):
